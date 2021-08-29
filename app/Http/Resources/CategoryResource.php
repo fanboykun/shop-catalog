@@ -14,6 +14,12 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'is_featured' => $this->is_featured == true ? 'true' : false,
+            'products' => ProductResource::collection($this->whenLoaded('products'))
+        ];
     }
 }

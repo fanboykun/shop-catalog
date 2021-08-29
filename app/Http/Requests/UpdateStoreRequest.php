@@ -13,7 +13,7 @@ class UpdateStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'tagline' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'instagram' => 'required|max:255',
+            'whatsapp_number' => 'nullable|string|max:15',
         ];
     }
 }

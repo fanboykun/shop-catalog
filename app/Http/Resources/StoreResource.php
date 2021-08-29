@@ -14,6 +14,12 @@ class StoreResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'tagline' => $this->tagline,
+            'address' => $this->address,
+            'instagram' => $this->instagram,
+            'whatsapp_number' => $this->whatsapp_number,
+        ];
     }
 }

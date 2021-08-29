@@ -13,7 +13,7 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,20 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'banner_id' => 'nullable',
+            'name' =>'required|string',
+            'category_id' => 'nullable',
+            'price' => 'required',
+            'description' => 'required|max:50',
+            'discount' => 'required',
+            'photo' => 'required',
+            'is_soldout' => 'nullable',
+            'is_hot' => 'nullable',
+            'size_id.*' => 'required',
+            'size_id.*.status' => 'nullable',
         ];
+
+        return $rules;
     }
 }

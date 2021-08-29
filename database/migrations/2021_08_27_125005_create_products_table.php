@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('banner_id')->nullOnDelete();
+            $table->foreignId('banner_id')->nullable()->nullOnDelete();
             $table->string('name')->required();
             $table->string('slug');
             $table->foreignId('category_id')->nullOnDelete();

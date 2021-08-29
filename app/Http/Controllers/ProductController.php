@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\{GetAllProduct, CreateNewProduct, UpdateProduct, DeleteProduct, ShowProduct};
+use App\Actions\Product\{GetAllProduct, CreateNewProduct, UpdateProduct, DeleteProduct, ShowProduct};
 use App\Http\Resources\ProductResource;
 use App\Http\Requests\{StoreProductRequest, UpdateProductRequest};
 use Symfony\Component\HttpFoundation\Response;
@@ -13,16 +13,16 @@ class ProductController extends Controller
     public function index(GetAllProduct $action)
     {
         $products = $action->getall();
-        return new ProductResource($products);
+        return response()->success(ProductResource::collection($products));
     }
 
     public function store(StoreProductRequest $request, CreateNewProduct $action)
     {
-        $product = $action->store($request->all());
+        $product = $action->store($request->validated());
 
         return (new ProductResource($product))
-            ->response()
-            ->setStatusCode(Response::HTTP_CREATED);
+        ->response()
+        ->setStatusCode(Response::HTTP_CREATED);
     }
 
     public function show(Product $product, ShowProduct $action)
