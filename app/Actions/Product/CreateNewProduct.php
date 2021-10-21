@@ -10,10 +10,10 @@ class CreateNewProduct
     {
         $product = Product::create($data);
         // $product->save($data);
-        $sizes = $product['sizes'];
-        foreach ($sizes as $size){
-            $product->sizes()->attach($size, ['status' => $size['status']]);
-        }
+        $product->sizes()->attach($data['size_id'], ['status' => $data['size_id']['status']]);
+        // $sizes = $product['sizes'];
+        // foreach ($sizes as $size){
+        // }
         return $product;
     }
 }

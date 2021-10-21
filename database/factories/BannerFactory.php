@@ -25,7 +25,7 @@ class BannerFactory extends Factory
         $title = $this->faker->sentence();
         return [
             'title' => $title,
-            'picture' => 'https://ui-avatars.com/api/?name='.urlencode($title).'&color=7F9CF5&background=EBF4FF',
+            // 'picture' => 'https://ui-avatars.com/api/?name='.urlencode($title).'&color=7F9CF5&background=EBF4FF',
             'is_active' => rand(0,1),
             'slug' => Str::slug($title)
         ];

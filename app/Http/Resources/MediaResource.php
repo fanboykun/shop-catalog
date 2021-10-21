@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BannerResource extends JsonResource
+class MediaResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,8 @@ class BannerResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'picture' => MediaResource::collection($this->picture),
-            'is_active' => $this->is_active == true ? 'true' : 'false',
-            'slug' => $this->slug,
-            'products' => ProductResource::collection($this->whenLoaded('products'))
+            'file_name' => $this->file_name,
+            'original_url' => $this->getUrl(),
         ];
     }
 }

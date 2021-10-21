@@ -25,8 +25,8 @@ class StoreBannerRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:100',
-            'picture' => 'required',
-            'is_active' => 'nullable|boolean'
+            'is_active' => 'nullable|boolean',
+            'picture' => 'nullable',
         ];
     }
 }

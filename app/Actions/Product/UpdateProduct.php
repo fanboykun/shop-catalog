@@ -7,10 +7,10 @@ class UpdateProduct
     public function update($product, $data)
     {
         $product->update($data);
-        $sizes = $product['sizes'];
-        foreach ($sizes as $size){
-            $product->sizes()->sync($size, ['status' => $size['status']]);
-        }
+        // $sizes = $product['sizes'];
+        $product->sizes()->sync($data['size_id'], ['status' => $data['size_id']['status']]);
+        // foreach ($sizes as $size){
+        // }
         return $product;
     }
 }

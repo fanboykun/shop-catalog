@@ -21,14 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('products/{product}/related', function (Product $product) {
-    // $product = Product::find($product);
-    // return new ProductResource($product);
-    // $products = Product::whereBetween('created_at', [now(), now()->subDays(7)])->get();
-    // return response()->success(ProductResource::collection($products));
     $products = Product::related($product)->get();
     return response()->success(ProductResource::collection($products));
 
 });
+
+// Route::get('banners/token', [BannerController::class, 'showToken']);
 
 
 Route::apiResource('/products',ProductController::class);

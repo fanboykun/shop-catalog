@@ -23,10 +23,11 @@ class UpdateBannerRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title' => 'required|string|max:100',
-            'picture' => 'required',
-            'is_active' => 'nullable|boolean'
+            'is_active' => 'required|boolean',
+            'picture' => 'nullable',
         ];
+        return $rules;
     }
 }
